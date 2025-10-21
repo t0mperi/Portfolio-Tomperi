@@ -1,0 +1,166 @@
+/* Base layout */
+#root {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+}
+
+.site-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Pill navigation */
+.nav {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: #0f172a;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: .4rem .9rem;
+  font-size: .95rem;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+
+.nav a:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2,6,23,.08);
+}
+
+/* Hero with gradient accent */
+.hero h1 {
+  margin: .25rem 0 0;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #0f172a 0%, #3b82f6 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (min-width: 700px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.section h2 {
+  margin: 0 0 .75rem 0;
+  font-size: 1.5rem;
+  letter-spacing: -.01em;
+}
+
+.name {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+/* Two-column groups */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 800px) {
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Tag pills */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .6rem;
+  list-style: none;
+  padding: 0;
+  margin: .5rem 0 0;
+}
+
+.tag-list li {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: .35rem .6rem;
+  border-radius: 9999px;
+  font-size: .9rem;
+}
+
+.work p {
+  margin: .25rem 0 0;
+}
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 800px) {
+  .project-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.project-card {
+  border: 1px solid #e2e8f0;
+  border-radius: .75rem;
+  padding: 1.1rem;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(2,6,23,.04);
+  transition: box-shadow .2s ease, transform .1s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 10px 24px rgba(2,6,23,.12);
+  transform: translateY(-2px);
+}
+
+.project-image {
+  height: 160px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  border-radius: .5rem;
+  margin-bottom: .9rem;
+  color: #334155;
+  font-weight: 600;
+}
+
+.contact-links {
+  display: flex;
+  gap: .75rem;
+}
+
+.contact-links a {
+  color: #0f172a;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: .45rem .9rem;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+
+.contact-links a:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2,6,23,.08);
+}
+
