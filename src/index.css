@@ -2,8 +2,8 @@
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   line-height: 1.6;
   font-weight: 400;
-  color: #0f172a;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #09122b;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -29,6 +29,7 @@ body {
 
 h1 {
   line-height: 1.1;
+  color: #ffffff;
 }
 
 /* Reset buttons (not heavily used in this site) */

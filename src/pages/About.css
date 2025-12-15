@@ -1,0 +1,19 @@
+.skill-tag {
+  border: 2px solid #14bcff;
+  background: #000000;
+  color: #14bcff;
+  padding: .35rem .6rem;
+  border-radius: 9999px;
+  font-size: .9rem;
+  font-weight: 700;
+  box-shadow: 0 0 16px rgba(20, 188, 255, 0.28);
+  transition: background .15s ease, color .15s ease, transform .08s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.skill-tag:hover {
+  background: #14bcff;
+  color: #000000;
+  border-color: #14bcff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(20, 188, 255, 0.32);
+}
+

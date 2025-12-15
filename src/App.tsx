@@ -1,14 +1,16 @@
 import './App.css'
 import Header from './components/Header'
-import About from './components/About'
-import Experience from './components/Experience'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
+import Hero from './components/Hero'
+import About from './pages/About'
+import Experience from './pages/Experience'
+import Projects from './pages/Projects'
+import Contact from './pages/Contact'
 
 function App() {
   return (
     <>
       <Header />
+      <Hero />
       <main>
         <About />
         <Experience />
