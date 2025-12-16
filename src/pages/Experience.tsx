@@ -1,6 +1,6 @@
 import './Experience.css';
-
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Experience() {
   const [openEnsto, setOpenEnsto] = useState(true);
@@ -8,12 +8,24 @@ export default function Experience() {
 
   return (
     <section id="experience" className="section">
-      <div className="xp-header">
+      <motion.div
+        className="xp-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <h2>Experience</h2>
-      </div>
+      </motion.div>
 
       <div className="xp-stack">
-        <article className="xp-card">
+        <motion.article
+          className="xp-card"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+        >
           <button
             className="xp-card-head"
             type="button"
@@ -27,26 +39,46 @@ export default function Experience() {
                 <span>2023 — Present</span>
               </div>
             </div>
-            <div className={`xp-chevron ${openEnsto ? 'open' : ''}`}>▼</div>
+            <motion.div
+              className={`xp-chevron ${openEnsto ? 'open' : ''}`}
+              animate={{ rotate: openEnsto ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              ▼
+            </motion.div>
           </button>
 
-          {openEnsto && (
-            <div className="xp-body">
-              <ul className="xp-list">
-                <li>Built an application to support life cycle assessment modelling.</li>
-                <li>Designed and implemented a SQL Server database for the app.</li>
-              </ul>
-              <div className="xp-impact">
-                <div className="xp-impact-label">Impact</div>
+          <AnimatePresence>
+            {openEnsto && (
+              <motion.div
+                className="xp-body"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
                 <ul className="xp-list">
-                  <li>Improved modelling turnaround time by reducing manual steps.</li>
+                  <li>Built an application to support life cycle assessment modelling.</li>
+                  <li>Designed and implemented a SQL Server database for the app.</li>
                 </ul>
-              </div>
-            </div>
-          )}
-        </article>
+                <div className="xp-impact">
+                  <div className="xp-impact-label">Impact</div>
+                  <ul className="xp-list">
+                    <li>Improved modelling turnaround time by reducing manual steps.</li>
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.article>
 
-        <article className="xp-card">
+        <motion.article
+          className="xp-card"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
           <button
             className="xp-card-head"
             type="button"
@@ -60,16 +92,30 @@ export default function Experience() {
                 <span>2022 — 2023</span>
               </div>
             </div>
-            <div className={`xp-chevron ${openFreelance ? 'open' : ''}`}>▼</div>
+            <motion.div
+              className={`xp-chevron ${openFreelance ? 'open' : ''}`}
+              animate={{ rotate: openFreelance ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              ▼
+            </motion.div>
           </button>
 
-          {openFreelance && (
-            <div className="xp-body">
-              <ul className="xp-list">
-              </ul>
-            </div>
-          )}
-        </article>
+          <AnimatePresence>
+            {openFreelance && (
+              <motion.div
+                className="xp-body"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ul className="xp-list">
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.article>
       </div>
     </section>
   );

@@ -1,26 +1,61 @@
+import { motion } from 'framer-motion';
 import './Hero.css';
 
 export default function Hero() {
   return (
     <section className="hero section" id="hero">
-        <img
-            src="/portfoliokuva.jpg"
-            alt="Portrait of Henri Tomperi"
-            className="profile-photo"
-            loading="lazy"
-          />
+      <motion.img
+        src="/portfoliokuva.jpg"
+        alt="Portrait of Henri Tomperi"
+        className="profile-photo"
+        loading="lazy"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+      />
       <div className="hero-text">
-        <div className="pill">Full-stack student</div>
-        <div className="hero-box">
+        <motion.div
+          className="pill"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Full-stack student
+        </motion.div>
+        <motion.div
+          className="hero-box"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           <h1>Hi, I'm Henri Tomperi</h1>
           <p className="typing">I'm a Software Development student at Haaga-Helia University of Applied Sciences</p>
-        </div>
+        </motion.div>
 
-        <div className="hero-box">
-          <a className="btn-ghost" href="#projects">View Projects</a>
-          <a className="btn-ghost" href="#contact">Contact</a>
-        </div>
-        </div>
+        <motion.div
+          className="hero-box"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <motion.a
+            className="btn-ghost"
+            href="#projects"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View Projects
+          </motion.a>
+          <motion.a
+            className="btn-ghost"
+            href="#contact"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Contact
+          </motion.a>
+        </motion.div>
+      </div>
     </section>
   );
 }

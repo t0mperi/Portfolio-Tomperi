@@ -1,5 +1,5 @@
 
-
+import { motion } from 'framer-motion';
 import './Projects.css';
 
 export default function Projects() {
@@ -23,10 +23,25 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section">
-      <h2>Projects</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        Projects
+      </motion.h2>
       <div className="project-grid">
-        {projects.map((project) => (
-          <article key={project.title} className="project-card">
+        {projects.map((project, index) => (
+          <motion.article
+            key={project.title}
+            className="project-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            whileHover={{ y: -5 }}
+          >
             <div className="project-image">
               <span className="project-dot" />
               <span className="project-dot" />
@@ -41,7 +56,7 @@ export default function Projects() {
                 ))}
               </ul>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>
