@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Mail, User, MessageSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ScrollAnimation from '../components/ScrollAnimation';
 import './Contact.css';
 
 const contactSchema = z.object({
@@ -32,13 +33,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section contact-section">
       <div className="contact-container">
-        <motion.div
-          className="contact-form-wrapper"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
-        >
+        <ScrollAnimation className="contact-form-wrapper" x={-50}>
           <h2 className="contact-heading">LEAVE A MESSAGE</h2>
           <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
@@ -87,14 +82,8 @@ export default function Contact() {
               {isSubmitting ? 'Sending...' : 'Send message'}
             </motion.button>
           </form>
-        </motion.div>
-        <motion.div
-          className="contact-profile"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
-        >
+        </ScrollAnimation>
+        <ScrollAnimation className="contact-profile" x={50}>
           <div className="profile-card">
             <div className="profile-info">
               <div className="profile-name">Henri Tomperi</div>
@@ -104,7 +93,7 @@ export default function Contact() {
               <div className="profile-email">henritomperi97@gmail.com</div>
             </div>
           </div>
-        </motion.div>
+        </ScrollAnimation>
       </div>
     </section>
   );

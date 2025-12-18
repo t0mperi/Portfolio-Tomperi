@@ -1,5 +1,6 @@
 
 import { motion } from 'framer-motion';
+import ScrollAnimation from '../components/ScrollAnimation';
 import './Projects.css';
 
 export default function Projects() {
@@ -23,14 +24,9 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section">
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
+      <ScrollAnimation as="h2" y={30}>
         Projects
-      </motion.h2>
+      </ScrollAnimation>
       <div className="project-grid">
         {projects.map((project, index) => (
           <motion.article

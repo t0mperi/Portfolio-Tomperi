@@ -1,6 +1,7 @@
 import './Experience.css';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ScrollAnimation from '../components/ScrollAnimation';
 
 export default function Experience() {
   const [openEnsto, setOpenEnsto] = useState(true);
@@ -8,24 +9,12 @@ export default function Experience() {
 
   return (
     <section id="experience" className="section">
-      <motion.div
-        className="xp-header"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
+      <ScrollAnimation className="xp-header" y={30}>
         <h2>Experience</h2>
-      </motion.div>
+      </ScrollAnimation>
 
       <div className="xp-stack">
-        <motion.article
-          className="xp-card"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
-        >
+        <ScrollAnimation as="article" className="xp-card" delay={0}>
           <button
             className="xp-card-head"
             type="button"
@@ -70,15 +59,9 @@ export default function Experience() {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.article>
+        </ScrollAnimation>
 
-        <motion.article
-          className="xp-card"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-        >
+        <ScrollAnimation as="article" className="xp-card" delay={0.15}>
           <button
             className="xp-card-head"
             type="button"
@@ -115,7 +98,7 @@ export default function Experience() {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.article>
+        </ScrollAnimation>
       </div>
     </section>
   );
