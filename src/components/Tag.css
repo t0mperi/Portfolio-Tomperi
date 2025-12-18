@@ -1,9 +1,10 @@
-.skill-tag {
+.tag {
+  display: inline-block;
   border: 2px solid #14bcff;
   background: #000000;
   color: #14bcff;
   padding: .35rem .6rem;
-  border-radius: 9999px;
+  border-radius: 0;
   font-size: .9rem;
   font-weight: 700;
   box-shadow: 0 0 16px rgba(20, 188, 255, 0.28);
@@ -11,7 +12,8 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-.skill-tag:hover {
+
+.tag:hover {
   background: #14bcff;
   color: #000000;
   border-color: #14bcff;
@@ -19,22 +21,34 @@
   box-shadow: 0 8px 20px rgba(20, 188, 255, 0.32);
 }
 
+.tag-skill {
+  /* Same as base tag */
+}
+
+.tag-project {
+  box-shadow: 0 0 14px rgba(20, 188, 255, 0.25);
+}
+
+.tag-project:hover {
+  box-shadow: 0 8px 18px rgba(20, 188, 255, 0.32);
+}
+
 @media (max-width: 768px) {
-  .skill-tag {
+  .tag {
     font-size: 0.85rem;
     padding: .32rem .55rem;
   }
 }
 
 @media (max-width: 480px) {
-  .skill-tag {
+  .tag {
     font-size: 0.8rem;
     padding: .3rem .5rem;
   }
 }
 
 @media (max-width: 360px) {
-  .skill-tag {
+  .tag {
     font-size: 0.75rem;
     padding: .28rem .45rem;
   }

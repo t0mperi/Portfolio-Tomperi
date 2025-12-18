@@ -1,6 +1,7 @@
 import './Experience.css';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Building2, Calendar, Target } from 'lucide-react';
 import ScrollAnimation from '../components/ScrollAnimation';
 
 export default function Experience() {
@@ -21,19 +22,23 @@ export default function Experience() {
             onClick={() => setOpenEnsto((v) => !v)}
             aria-expanded={openEnsto}
           >
-            <div>
-              <div className="xp-company">Ensto Legrand</div>
+            <div className="xp-card-info">
+              <div className="xp-company">
+                <Building2 size={18} />
+                <span>Ensto Legrand</span>
+              </div>
               <div className="xp-role">Developer · LCA tooling</div>
               <div className="xp-meta">
+                <Calendar size={16} />
                 <span>2023 — Present</span>
               </div>
             </div>
             <motion.div
-              className={`xp-chevron ${openEnsto ? 'open' : ''}`}
+              className="xp-chevron"
               animate={{ rotate: openEnsto ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              ▼
+              <ChevronDown size={20} />
             </motion.div>
           </button>
 
@@ -51,7 +56,10 @@ export default function Experience() {
                   <li>Designed and implemented a SQL Server database for the app.</li>
                 </ul>
                 <div className="xp-impact">
-                  <div className="xp-impact-label">Impact</div>
+                  <div className="xp-impact-label">
+                    <Target size={16} />
+                    <span>Impact</span>
+                  </div>
                   <ul className="xp-list">
                     <li>Improved modelling turnaround time by reducing manual steps.</li>
                   </ul>
@@ -68,19 +76,23 @@ export default function Experience() {
             onClick={() => setOpenFreelance((v) => !v)}
             aria-expanded={openFreelance}
           >
-            <div>
-              <div className="xp-company">Freelance</div>
+            <div className="xp-card-info">
+              <div className="xp-company">
+                <Building2 size={18} />
+                <span>Freelance</span>
+              </div>
               <div className="xp-role">Full-stack Developer</div>
               <div className="xp-meta">
+                <Calendar size={16} />
                 <span>2022 — 2023</span>
               </div>
             </div>
             <motion.div
-              className={`xp-chevron ${openFreelance ? 'open' : ''}`}
+              className="xp-chevron"
               animate={{ rotate: openFreelance ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              ▼
+              <ChevronDown size={20} />
             </motion.div>
           </button>
 

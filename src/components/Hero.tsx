@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import Button from './Button';
+import Card from './Card';
 import './Hero.css';
 
 export default function Hero() {
@@ -22,39 +24,34 @@ export default function Hero() {
         >
           Full-stack student
         </motion.div>
-        <motion.div
-          className="hero-box"
+        <Card
+          variant="hero"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, delay: 0.3 }}
+          hover={false}
         >
           <h1>Hi, I'm Henri Tomperi</h1>
           <p className="typing">I'm a Software Development student at Haaga-Helia University of Applied Sciences</p>
-        </motion.div>
+        </Card>
 
-        <motion.div
-          className="hero-box"
+        <Card
+          variant="hero"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, delay: 0.4 }}
+          hover={false}
+          className="hero-ctas"
         >
-          <motion.a
-            className="btn-ghost"
-            href="#projects"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <Button variant="ghost" href="#projects">
             View Projects
-          </motion.a>
-          <motion.a
-            className="btn-ghost"
-            href="#contact"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          </Button>
+          <Button variant="ghost" href="#contact">
             Contact
-          </motion.a>
-        </motion.div>
+          </Button>
+        </Card>
       </div>
     </section>
   );

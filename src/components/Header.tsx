@@ -1,9 +1,11 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Header.css';
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,8 +34,16 @@ export default function Header() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       window.history.pushState(null, '', href);
+      setIsMobileMenuOpen(false);
     }
   };
+
+  const navLinks = [
+    { href: '#about', label: 'About' },
+    { href: '#experience', label: 'Experience' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#contact', label: 'Contact' },
+  ];
 
   return (
     <header className="site-header">
@@ -42,58 +52,110 @@ export default function Header() {
           <span className="brand-name">HENRI TOMPERI</span>
         </a>
       </div>
-      <NavigationMenu.Root className="nav-root">
+      <NavigationMenu.Root className="nav-root desktop-nav">
         <NavigationMenu.List className="nav">
-          <NavigationMenu.Item>
-            <NavigationMenu.Link
-              className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
-              href="#about"
-              onSelect={(e) => {
-                e.preventDefault();
-                handleLinkClick('#about');
-              }}
-            >
-              About
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
-          <NavigationMenu.Item>
-            <NavigationMenu.Link
-              className={`nav-link ${activeSection === 'experience' ? 'active' : ''}`}
-              href="#experience"
-              onSelect={(e) => {
-                e.preventDefault();
-                handleLinkClick('#experience');
-              }}
-            >
-              Experience
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
-          <NavigationMenu.Item>
-            <NavigationMenu.Link
-              className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
-              href="#projects"
-              onSelect={(e) => {
-                e.preventDefault();
-                handleLinkClick('#projects');
-              }}
-            >
-              Projects
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
-          <NavigationMenu.Item>
-            <NavigationMenu.Link
-              className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-              href="#contact"
-              onSelect={(e) => {
-                e.preventDefault();
-                handleLinkClick('#contact');
-              }}
-            >
-              Contact
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
+          {navLinks.map((link) => (
+            <NavigationMenu.Item key={link.href}>
+              <NavigationMenu.Link
+                className={`nav-link ${activeSection === link.href.substring(1) ? 'active' : ''}`}
+                href={link.href}
+                onSelect={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(link.href);
+                }}
+              >
+                {link.label}
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          ))}
         </NavigationMenu.List>
       </NavigationMenu.Root>
+
+      <button
+        className="mobile-menu-button"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+        aria-expanded={isMobileMenuOpen}
+      >
+        <motion.div
+          className="hamburger-container"
+          animate={isMobileMenuOpen ? 'open' : 'closed'}
+        >
+          <motion.span
+            className="hamburger-line top"
+            variants={{
+              closed: { rotate: 0, y: 0 },
+              open: { rotate: -45, y: 8 }
+            }}
+            transition={{ duration: 0.3 }}
+          />
+          <motion.span
+            className="hamburger-line middle"
+            variants={{
+              closed: { opacity: 1 },
+              open: { opacity: 0 }
+            }}
+            transition={{ duration: 0.3 }}
+          />
+          <motion.span
+            className="hamburger-line bottom"
+            variants={{
+              closed: { rotate: 0, y: 0 },
+              open: { rotate: 45, y: -8 }
+            }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+      </button>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div
+              className="mobile-menu-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            <motion.nav
+              className="mobile-menu"
+              initial={{ y: '-100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%' }}
+              transition={{ duration: 0.5, ease: [0.55, 0, 0.1, 1] }}
+            >
+              <ul className="mobile-menu-list">
+                {navLinks.map((link, index) => (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ 
+                      delay: 0.2 + (index * 0.1),
+                      duration: 0.4,
+                      ease: [0.55, 0, 0.1, 1]
+                    }}
+                  >
+                    <a
+                      href={link.href}
+                      className={`mobile-nav-link ${activeSection === link.href.substring(1) ? 'active' : ''}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleLinkClick(link.href);
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.nav>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

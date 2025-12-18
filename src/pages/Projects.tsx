@@ -1,6 +1,6 @@
-
-import { motion } from 'framer-motion';
 import ScrollAnimation from '../components/ScrollAnimation';
+import Card from '../components/Card';
+import Tag from '../components/Tag';
 import './Projects.css';
 
 export default function Projects() {
@@ -29,9 +29,9 @@ export default function Projects() {
       </ScrollAnimation>
       <div className="project-grid">
         {projects.map((project, index) => (
-          <motion.article
+          <Card
             key={project.title}
-            className="project-card"
+            variant="project"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
@@ -48,11 +48,13 @@ export default function Projects() {
               <p>{project.description}</p>
               <ul className="tag-list">
                 {project.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
+                  <li key={tag}>
+                    <Tag variant="project">{tag}</Tag>
+                  </li>
                 ))}
               </ul>
             </div>
-          </motion.article>
+          </Card>
         ))}
       </div>
     </section>

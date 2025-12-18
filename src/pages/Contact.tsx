@@ -2,8 +2,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Mail, User, MessageSquare } from 'lucide-react';
-import { motion } from 'framer-motion';
 import ScrollAnimation from '../components/ScrollAnimation';
+import Button from '../components/Button';
+import Input from '../components/Input';
 import './Contact.css';
 
 const contactSchema = z.object({
@@ -43,6 +44,7 @@ export default function Contact() {
                   type="text"
                   id="name"
                   placeholder="Name"
+                  className={`form-input ${errors.name ? 'error' : ''}`}
                   {...register('name')}
                 />
               </div>
@@ -55,6 +57,7 @@ export default function Contact() {
                   type="email"
                   id="email"
                   placeholder="Email"
+                  className={`form-input ${errors.email ? 'error' : ''}`}
                   {...register('email')}
                 />
               </div>
@@ -67,20 +70,19 @@ export default function Contact() {
                   id="message"
                   placeholder="Message"
                   rows={6}
+                  className={`form-input ${errors.message ? 'error' : ''}`}
                   {...register('message')}
                 />
               </div>
               {errors.message && <span className="error-message">{errors.message.message}</span>}
             </div>
-            <motion.button
+            <Button
+              variant="submit"
               type="submit"
-              className="btn-submit"
               disabled={isSubmitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
             >
               {isSubmitting ? 'Sending...' : 'Send message'}
-            </motion.button>
+            </Button>
           </form>
         </ScrollAnimation>
         <ScrollAnimation className="contact-profile" x={50}>

@@ -1,7 +1,14 @@
 import ScrollAnimation from '../components/ScrollAnimation';
+import Tag from '../components/Tag';
 import './About.css';
 
 export default function About() {
+  const skills = [
+    'HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'Java', 'C#', 'Spring Boot',
+    'Node.js', 'SQL', 'Docker', 'Git', 'REST APIs', 'Python', 'Visual Studio',
+    'VS Code', 'GitHub', 'Azure'
+  ];
+
   return (
     <section id="about" className="section">
       <ScrollAnimation as="h3" y={30}>
@@ -20,24 +27,11 @@ export default function About() {
         <ScrollAnimation x={30} delay={0.2}>
           <h3>My Skills</h3>
           <ScrollAnimation as="ul" className="tag-list" y={0} delay={0.3}>
-            <li className="skill-tag">HTML</li>
-            <li className="skill-tag">CSS</li>
-            <li className="skill-tag">JavaScript</li>
-            <li className="skill-tag">React</li>
-            <li className="skill-tag">TypeScript</li>
-            <li className="skill-tag">Java</li>
-            <li className="skill-tag">C#</li>
-            <li className="skill-tag">Spring Boot</li>
-            <li className="skill-tag">Node.js</li>
-            <li className="skill-tag">SQL</li>
-            <li className="skill-tag">Docker</li>
-            <li className="skill-tag">Git</li>
-            <li className="skill-tag">REST APIs</li>
-            <li className="skill-tag">Python</li>
-            <li className="skill-tag">Visual Studio</li>
-            <li className="skill-tag">VS Code</li>
-            <li className="skill-tag">GitHub</li>
-            <li className="skill-tag">Azure</li>
+            {skills.map((skill) => (
+              <li key={skill}>
+                <Tag variant="skill">{skill}</Tag>
+              </li>
+            ))}
           </ScrollAnimation>
         </ScrollAnimation>
       </div>
