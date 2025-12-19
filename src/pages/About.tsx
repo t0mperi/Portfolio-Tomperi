@@ -1,8 +1,45 @@
+import React from 'react';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Tag from '../components/Tag';
 import './About.css';
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiTypescript,
+  SiSpring,
+  SiNodedotjs,
+  SiMysql,
+  SiDocker,
+  SiGit,
+  SiPython,
+  SiGithub,
+} from 'react-icons/si';
+import { FaJava, FaMicrosoft, FaCode, FaCloud } from 'react-icons/fa';
+import { SiSharp } from 'react-icons/si';
 
 export default function About() {
+  const skillIcons: Record<string, React.ReactElement> = {
+    'HTML': <SiHtml5 />,
+    'CSS': <SiCss3 />,
+    'JavaScript': <SiJavascript />,
+    'React': <SiReact />,
+    'TypeScript': <SiTypescript />,
+    'Java': <FaJava />,
+    'C#': <SiSharp />,
+    'Spring Boot': <SiSpring />,
+    'Node.js': <SiNodedotjs />,
+    'SQL': <SiMysql />,
+    'Docker': <SiDocker />,
+    'Git': <SiGit />,
+    'Python': <SiPython />,
+    'Visual Studio': <FaMicrosoft />,
+    'VS Code': <FaCode />,
+    'GitHub': <SiGithub />,
+    'Azure': <FaCloud />,
+  };
+
   const skills = [
     'HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'Java', 'C#', 'Spring Boot',
     'Node.js', 'SQL', 'Docker', 'Git', 'REST APIs', 'Python', 'Visual Studio',
@@ -26,11 +63,12 @@ export default function About() {
         </ScrollAnimation>
         <ScrollAnimation x={30} delay={0.2}>
           <h3>My Skills</h3>
-          <ScrollAnimation as="ul" className="tag-list" y={0} delay={0.3}>
+          <ScrollAnimation as="div" className="tag-list" y={0} delay={0.3}>
             {skills.map((skill) => (
-              <li key={skill}>
-                <Tag variant="skill">{skill}</Tag>
-              </li>
+              <Tag key={skill} variant="skill">
+                {skillIcons[skill] && <span className="skill-icon">{skillIcons[skill]}</span>}
+                {skill}
+              </Tag>
             ))}
           </ScrollAnimation>
         </ScrollAnimation>

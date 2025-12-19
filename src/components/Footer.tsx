@@ -12,6 +12,7 @@ export default function Footer() {
             href="https://github.com/t0mperi"
             target="_blank"
             rel="noreferrer"
+            className="btn"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -22,6 +23,7 @@ export default function Footer() {
             href="https://www.linkedin.com/in/henri-tomperi-8a2a0229b/"
             target="_blank"
             rel="noreferrer"
+            className="btn"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -30,6 +32,7 @@ export default function Footer() {
           </motion.a>
           <motion.a
             href="mailto:henritomperi97@gmail.com"
+            className="btn"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -38,7 +41,7 @@ export default function Footer() {
           </motion.a>
         </ScrollAnimation>
         <ScrollAnimation className="footer-text" y={0} delay={0.2}>
-          <p>© 2024 Henri Tomperi. All rights reserved.</p>
+          <p>Henri Tomperi</p>
         </ScrollAnimation>
       </div>
     </footer>

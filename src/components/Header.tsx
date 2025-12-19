@@ -1,11 +1,13 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../contexts/ThemeContext';
 import './Header.css';
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +59,7 @@ export default function Header() {
           {navLinks.map((link) => (
             <NavigationMenu.Item key={link.href}>
               <NavigationMenu.Link
-                className={`nav-link ${activeSection === link.href.substring(1) ? 'active' : ''}`}
+                className={`btn nav-link ${activeSection === link.href.substring(1) ? 'active' : ''}`}
                 href={link.href}
                 onSelect={(e) => {
                   e.preventDefault();
@@ -72,7 +74,16 @@ export default function Header() {
       </NavigationMenu.Root>
 
       <button
-        className="mobile-menu-button"
+        className="btn theme-toggle"
+        onClick={toggleTheme}
+        aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      >
+        {theme === 'light' ? '🌙' : '☀️'}
+      </button>
+
+      <button
+        className="btn mobile-menu-button"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle menu"
         aria-expanded={isMobileMenuOpen}

@@ -46,13 +46,11 @@ export default function Projects() {
             <div className="project-body">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
-              <ul className="tag-list">
+              <div className="tag-list">
                 {project.tags.map((tag) => (
-                  <li key={tag}>
-                    <Tag variant="project">{tag}</Tag>
-                  </li>
+                  <Tag key={tag} variant="project">{tag}</Tag>
                 ))}
-              </ul>
+              </div>
             </div>
           </Card>
         ))}

@@ -1,13 +1,42 @@
 :root {
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: 'MS Sans Serif', 'Segoe UI', sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  color: #ffffff;
-  background-color: #09122b;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Light theme (default) */
+  --bg-primary: #c0c0c0;
+  --bg-secondary: #ffffff;
+  --bg-card: #c0c0c0;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --border-color: #000000;
+  --border-light: #ffffff;
+  --border-dark: #808080;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] {
+  /* Dark theme */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-card: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #ffffff;
+  --border-light: #808080;
+  --border-dark: #404040;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 }
 
 html {
@@ -29,21 +58,21 @@ body {
 
 h1 {
   line-height: 1.1;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* Reset buttons (not heavily used in this site) */
 button {
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #f8fafc;
+  background-color: var(--bg-card);
   cursor: pointer;
   transition: border-color 0.25s, background .2s ease;
 }
 button:hover {
-  background: #e2e8f0;
+  background: var(--bg-secondary);
 }

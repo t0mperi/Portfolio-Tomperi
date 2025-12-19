@@ -23,7 +23,7 @@
 
 .xp-header h2 {
   margin: 0;
-  color: #e2e8f0;
+  color: var(--text-primary);
   letter-spacing: .02em;
   word-wrap: break-word;
 }
@@ -70,21 +70,22 @@
   }
 }
 
+/* Experience card extends base card styles */
 .xp-card {
-  border: 2px solid #14bcff;
-  background: #0a3250;
-  box-shadow: 0 4px 12px rgba(20, 188, 255, 0.2);
+  /* Inherits base card styles - same borders, background, shadow, colors */
+  border: none;
+  border-top: 2px solid var(--border-light);
+  border-left: 2px solid var(--border-light);
+  border-right: 2px solid var(--border-dark);
+  border-bottom: 2px solid var(--border-dark);
+  background: var(--bg-card);
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
   border-radius: 0;
   overflow: hidden;
   width: 100%;
   max-width: 100%;
-  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
-}
-
-.xp-card:hover {
-  border-color: #7cffe9;
-  box-shadow: 0 8px 20px rgba(20, 188, 255, 0.35);
-  background: #09122b;
+  transition: none;
+  color: var(--text-primary);
 }
 
 .xp-card-head {
@@ -94,12 +95,17 @@
   justify-content: space-between;
   gap: 1rem;
   padding: .95rem 1rem;
-  background: #0a3250;
-  color: #e2e8f0;
+  background: var(--bg-card);
+  color: var(--text-primary);
   border: none;
   cursor: pointer;
-  transition: background .15s ease, color .15s ease;
+  transition: none;
   min-width: 0;
+}
+
+.xp-card-head:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
 }
 
 @media (max-width: 768px) {
@@ -130,10 +136,6 @@
   }
 }
 
-.xp-card-head:hover {
-  background: #09122b;
-  color: #e2e8f0;
-}
 
 .xp-card-info {
   display: grid;
@@ -145,7 +147,7 @@
 .xp-company {
   font-weight: 800;
   font-size: 1.05rem;
-  color: #14bcff;
+  color: var(--text-secondary);
   word-wrap: break-word;
   display: flex;
   align-items: center;
@@ -154,7 +156,7 @@
 
 .xp-company svg {
   flex-shrink: 0;
-  color: #14bcff;
+  color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
@@ -177,7 +179,7 @@
 
 .xp-role {
   font-weight: 700;
-  color: #9fb5c6;
+  color: var(--text-secondary);
   word-wrap: break-word;
 }
 
@@ -203,7 +205,7 @@
   display: flex;
   align-items: center;
   gap: .5rem;
-  color: #9fb5c6;
+  color: var(--text-secondary);
   font-weight: 600;
   font-size: .95rem;
   flex-wrap: wrap;
@@ -211,7 +213,7 @@
 
 .xp-meta svg {
   flex-shrink: 0;
-  color: #9fb5c6;
+  color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
@@ -233,32 +235,29 @@
 }
 
 .xp-chevron {
-  border: 2px solid #14bcff;
-  background: #0a3250;
-  color: #14bcff;
+  border: none;
+  border-top: 2px solid var(--border-light);
+  border-left: 2px solid var(--border-light);
+  border-right: 2px solid var(--border-dark);
+  border-bottom: 2px solid var(--border-dark);
+  background: var(--bg-card);
+  color: var(--text-primary);
   padding: .4rem;
   border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  transition: none;
   flex-shrink: 0;
   width: 36px;
   height: 36px;
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
 }
 
 .xp-chevron svg {
-  color: #14bcff;
+  color: var(--text-primary);
 }
 
-.xp-chevron:hover {
-  background: #14bcff;
-  border-color: #7cffe9;
-}
-
-.xp-chevron:hover svg {
-  color: #000000;
-}
 
 @media (max-width: 480px) {
   .xp-chevron {
@@ -305,7 +304,7 @@
   margin: 0;
   display: grid;
   gap: .5rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
   width: 100%;
 }
 
@@ -340,7 +339,7 @@
   content: '•';
   position: absolute;
   left: -1rem;
-  color: #14bcff;
+  color: var(--text-secondary);
 }
 
 .xp-impact {
@@ -351,9 +350,9 @@
 
 .xp-impact-label {
   width: fit-content;
-  border: 2px solid #14bcff;
-  background: #000;
-  color: #14bcff;
+  border: 2px solid var(--text-secondary);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
   padding: .3rem .6rem;
   border-radius: 0;
   font-weight: 800;
@@ -364,5 +363,5 @@
 
 .xp-impact-label svg {
   flex-shrink: 0;
-  color: #14bcff;
+  color: var(--text-secondary);
 }

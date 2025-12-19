@@ -1,20 +1,25 @@
 @import '../App.css';
+@import './Button.css';
 
 
 .site-header {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   gap: 1rem;
   align-items: center;
   padding: .75rem 1rem;
-  border: 2px solid #14bcff;
+  border: none;
+  border-top: 2px solid var(--border-light);
+  border-left: 2px solid var(--border-light);
+  border-right: 2px solid var(--border-dark);
+  border-bottom: 2px solid var(--border-dark);
   border-radius: 0;
-  box-shadow: 0 4px 12px rgba(20, 188, 255, 0.3);
-  backdrop-filter: blur(8px);
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
+  backdrop-filter: none;
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #0a3250;
+  background: var(--bg-card);
   margin-bottom: 2rem;
 }
 
@@ -32,14 +37,15 @@
 }
 
 .brand-name {
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .08em;
-  color: #e2e8f0;
+  color: var(--text-primary);
   transition: color .2s ease;
+  font-size: 1.2rem;
 }
 
 .brand-link:hover .brand-name {
-  color: #14bcff;
+  color: var(--text-primary);
 }
 
 .nav-root {
@@ -57,43 +63,33 @@
   justify-content: center;
 }
 
-.nav-link {
-  color: #e2e8f0 !important;
-  background: transparent !important;
-  border: 2px solid #14bcff !important;
+/* Nav links use universal button styles from Button.css - exactly like footer buttons */
+/* Ensure .btn styles take precedence - nav-link only adds Radix UI compatibility */
+.btn.nav-link {
+  /* All visual styles come from .btn class */
+  /* Only override display/alignment for Radix UI compatibility */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   border-radius: 0 !important;
-  padding: .5rem 1rem !important;
-  font-size: .95rem !important;
-  font-weight: 700 !important;
-  letter-spacing: .05em !important;
-  box-shadow: none !important;
-  transition: background .2s ease, color .2s ease, border-color .2s ease !important;
-  text-decoration: none !important;
-  display: inline-block !important;
-  cursor: pointer;
   outline: none;
-  text-transform: uppercase;
-}
-
-.nav-link:hover,
-.nav-link:focus-visible {
-  background: rgba(20, 188, 255, 0.15) !important;
-  color: #14bcff !important;
-  border-color: #14bcff !important;
-  transform: none;
-  box-shadow: none !important;
 }
 
 .nav-link:focus-visible {
-  outline: 2px solid #14bcff;
+  outline: 2px solid var(--text-primary);
   outline-offset: 2px;
 }
 
+/* Active nav link - pressed in appearance */
 .nav-link.active {
-  background: #14bcff !important;
-  color: #000000 !important;
-  box-shadow: 0 0 20px rgba(20, 188, 255, 0.5) !important;
-  font-weight: 800 !important;
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-top: 2px solid var(--border-dark) !important;
+  border-left: 2px solid var(--border-dark) !important;
+  border-right: 2px solid var(--border-light) !important;
+  border-bottom: 2px solid var(--border-light) !important;
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light) !important;
+  font-weight: 400 !important;
 }
 
 .nav-actions {
@@ -101,49 +97,36 @@
   gap: .45rem;
 }
 
+/* Nav actions use universal button styles - exactly like footer buttons */
 .nav-actions a {
+  /* Uses .btn class - inherits all styles from Button.css */
   width: 36px;
   height: 36px;
-  display: grid;
-  place-items: center;
-  border: 2px solid #14bcff;
-  color: #14bcff;
-  background: #000;
-  border-radius: 8px;
-  box-shadow: 3px 3px 0 #000;
-  font-weight: 800;
-  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+  padding: 0;
+  gap: 0;
 }
 
-.nav-actions a:hover {
-  background: #14bcff;
-  border-color: #000000;
-  border-width: 2px;
-  color: #000;
-  box-shadow: 3px 3px 0 #ffffff;
-  transform: translateY(-1px);
+/* Theme Toggle Button - uses universal .btn styles - exactly like footer buttons */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  gap: 0;
+  /* Inherits all other styles from .btn (borders, background, shadow, hover) */
 }
 
-/* Mobile Menu Button */
+/* Mobile Menu Button - uses universal .btn styles - exactly like footer buttons */
 .mobile-menu-button {
   display: none;
   width: 42px;
   height: 42px;
-  border: 2px solid #14bcff;
-  background: #000000;
-  border-radius: 8px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  transition: background .15s ease, box-shadow .15s ease;
-  box-shadow: 0 0 14px rgba(20, 188, 255, 0.28);
+  padding: 0;
+  gap: 0;
   position: relative;
   z-index: 1001;
-}
-
-.mobile-menu-button:hover {
-  background: #14bcff;
-  box-shadow: 0 0 18px rgba(20, 188, 255, 0.4);
+  /* Inherits all other styles from .btn (borders, background, shadow, hover) */
 }
 
 .hamburger-container {
@@ -159,14 +142,14 @@
   display: block;
   width: 100%;
   height: 4px;
-  background-color: #14bcff;
-  border-radius: 2px;
+  background-color: var(--text-primary);
+  border-radius: 0;
   position: absolute;
-  transition: background-color 0.2s ease;
+  transition: none;
 }
 
 .mobile-menu-button:hover .hamburger-line {
-  background-color: #000000;
+  background-color: var(--text-primary);
 }
 
 .hamburger-line.top {
@@ -186,7 +169,8 @@
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: var(--bg-primary);
+  opacity: 0.95;
   backdrop-filter: blur(10px);
   z-index: 999;
 }
@@ -218,13 +202,13 @@
 
 .mobile-nav-link {
   display: block;
-  color: #14bcff;
-  font-weight: 800;
+  color: var(--text-primary);
+  font-weight: 400;
   font-size: 2rem;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: color 0.3s ease, transform 0.2s ease;
+  transition: none;
   position: relative;
 }
 
@@ -236,15 +220,15 @@
   transform: translateX(-50%) scaleX(0);
   width: 100%;
   height: 3px;
-  background: #14bcff;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 10px rgba(20, 188, 255, 0.6);
+  background: var(--text-primary);
+  transition: none;
+  box-shadow: none;
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link:focus-visible {
-  color: #7cffe9;
-  transform: translateY(-3px);
+  color: var(--text-primary);
+  transform: none;
 }
 
 .mobile-nav-link:hover::after,
@@ -253,7 +237,7 @@
 }
 
 .mobile-nav-link.active {
-  color: #7cffe9;
+  color: var(--text-primary);
 }
 
 .mobile-nav-link.active::after {
@@ -261,12 +245,7 @@
 }
 
 /* Responsive Header */
-@media (max-width: 1024px) {
-  .nav-link {
-    padding: .55rem 1rem !important;
-    font-size: .9rem !important;
-  }
-}
+/* Responsive styles handled by Button.css - removed overrides */
 
 @media (max-width: 768px) {
   .desktop-nav {

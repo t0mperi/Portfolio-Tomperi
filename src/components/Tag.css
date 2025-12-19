@@ -1,42 +1,89 @@
+/* Universal Tag component - reusable on all pages */
 .tag {
-  display: inline-block;
-  border: 2px solid #14bcff;
-  background: #000000;
-  color: #14bcff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: none;
+  border-top: 2px solid var(--border-light);
+  border-left: 2px solid var(--border-light);
+  border-right: 2px solid var(--border-dark);
+  border-bottom: 2px solid var(--border-dark);
+  background: var(--bg-card);
+  color: var(--text-primary);
   padding: .35rem .6rem;
   border-radius: 0;
   font-size: .9rem;
-  font-weight: 700;
-  box-shadow: 0 0 16px rgba(20, 188, 255, 0.28);
-  transition: background .15s ease, color .15s ease, transform .08s ease, box-shadow .15s ease, border-color .15s ease;
+  font-weight: 400;
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
+  transition: none;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  cursor: default;
 }
 
+/* Base tag hover - can be overridden by variants */
 .tag:hover {
-  background: #14bcff;
-  color: #000000;
-  border-color: #14bcff;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(20, 188, 255, 0.32);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-top: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  transform: none;
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
 }
 
-.tag-skill {
-  /* Same as base tag */
+.tag-skill:hover {
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border-top: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  transform: none;
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
+}
+
+/* Skill icon hover effect */
+.tag-skill:hover .skill-icon {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .tag-project {
-  box-shadow: 0 0 14px rgba(20, 188, 255, 0.25);
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
 }
 
 .tag-project:hover {
-  box-shadow: 0 8px 18px rgba(20, 188, 255, 0.32);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-top: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
+}
+
+/* Skill icon styling - reusable */
+.skill-icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.3em;
+  line-height: 1;
+  opacity: 0.9;
+  filter: brightness(1.1);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  color: var(--text-primary);
 }
 
 @media (max-width: 768px) {
   .tag {
     font-size: 0.85rem;
     padding: .32rem .55rem;
+  }
+
+  .skill-icon {
+    font-size: 1.25em;
   }
 }
 
@@ -45,12 +92,20 @@
     font-size: 0.8rem;
     padding: .3rem .5rem;
   }
+
+  .skill-icon {
+    font-size: 1.2em;
+  }
 }
 
 @media (max-width: 360px) {
   .tag {
     font-size: 0.75rem;
     padding: .28rem .45rem;
+  }
+
+  .skill-icon {
+    font-size: 1.15em;
   }
 }
 

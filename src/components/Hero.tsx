@@ -18,7 +18,7 @@ export default function Hero() {
       <div className="hero-text">
         <motion.div
           className="pill"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >

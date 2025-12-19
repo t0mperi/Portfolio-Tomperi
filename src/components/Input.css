@@ -4,8 +4,8 @@
 }
 
 .form-group label {
-  color: #e2e8f0;
-  font-weight: 600;
+  color: var(--text-primary);
+  font-weight: 400;
   font-size: 0.9rem;
 }
 
@@ -18,7 +18,7 @@
 .input-icon {
   position: absolute;
   left: 1rem;
-  color: #14bcff;
+  color: var(--text-secondary);
   z-index: 1;
   pointer-events: none;
   display: flex;
@@ -28,26 +28,34 @@
 .form-input {
   width: 100%;
   padding: .85rem 1rem .85rem 3rem;
-  border: 2px solid #14bcff;
-  background: #000000;
-  color: #e2e8f0;
+  border: none;
+  border-top: 2px solid var(--border-dark);
+  border-left: 2px solid var(--border-dark);
+  border-right: 2px solid var(--border-light);
+  border-bottom: 2px solid var(--border-light);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   border-radius: 0;
   font-size: 1rem;
   font-family: inherit;
-  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  transition: none;
   box-sizing: border-box;
   word-wrap: break-word;
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #7cffe9;
-  background: #05070b;
-  box-shadow: 0 0 12px rgba(20, 188, 255, 0.3);
+  border-top: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-light);
+  border-bottom: 2px solid var(--border-light);
+  background: var(--bg-secondary);
+  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
 }
 
 .form-input::placeholder {
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 .form-input.error {
