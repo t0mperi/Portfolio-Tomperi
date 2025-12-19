@@ -1,11 +1,3 @@
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem .6rem;
-  list-style: none;
-  padding: 0;
-  margin: .5rem 0 0;
-}
 
 
 
@@ -163,18 +155,6 @@
 @media (max-width: 480px) {
   .tag-list {
     gap: 0.35rem 0.45rem;
-  }
-
-  .tag-list li {
-    font-size: 0.8rem;
-    padding: .3rem .5rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .tag-list span {
-    font-size: 0.75rem;
-    padding: .28rem .45rem;
   }
 }
 

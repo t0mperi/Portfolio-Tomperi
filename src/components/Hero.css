@@ -33,35 +33,6 @@
   min-width: 0;
 }
 
-.hero-box {
-  display: flex;
-  flex-direction: column;
-  gap: .75rem;
-  align-items: center;
-  border: 2px solid var(--text-secondary);
-  padding: 1rem 1.25rem;
-  border-radius: 0;
-  background: var(--bg-card);
-  box-shadow: inset 1px 1px 0 var(--border-color), inset -1px -1px 0 var(--border-light);
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  min-width: 0;
-  box-sizing: border-box;
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-
-.hero-box h1 {
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 
 .typing {
   display: block;
@@ -87,12 +58,6 @@
 }
 
 
-@keyframes typing {
-  0%   { max-width: 0; }
-  60%  { max-width: 100%; }
-  80%  { max-width: 100%; }
-  100% { max-width: 0; }
-}
 
 @keyframes blink {
   50% { border-color: transparent; }
@@ -153,57 +118,6 @@
   }
 }
 
-.hero-box p {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  min-width: 0;
-  box-sizing: border-box;
-  text-align: center;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  padding: 0;
-}
-
-.hero-box p.typing {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-@media (max-width: 768px) {
-  .hero-box p {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-box p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .hero-box p {
-    font-size: 0.85rem;
-  }
-}
-
-.tagline {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.55;
-}
 
 .hero-ctas {
   display: flex;
@@ -221,20 +135,6 @@
 
 /* Button styles now use universal Button.css - removed conflicting styles */
 
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-  color: var(--text-secondary);
-  font-weight: 600;
-}
-
-.hero-meta span {
-  padding: .35rem .65rem;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-card);
-}
 
 .profile-photo {
   width: 260px;
@@ -295,34 +195,6 @@
     gap: 1rem;
   }
 
-  .hero-box {
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 100%;
-    padding: 1rem 0.85rem;
-    overflow: hidden;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-
-  .hero-box h1 {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  .hero-box p {
-    text-align: center;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .hero-meta {
-    justify-content: center;
-  }
 
   .pill {
     margin-left: auto;
@@ -340,13 +212,6 @@
     gap: 0.85rem;
   }
 
-  .hero-box {
-    padding: 0.85rem 0.75rem;
-    gap: 0.65rem;
-    overflow: hidden;
-    min-width: 0;
-    box-sizing: border-box;
-  }
 
   .hero h1 {
     font-size: 1.6rem;
@@ -365,18 +230,6 @@
     gap: 1rem;
   }
 
-  .hero-box {
-    padding: 0.75rem 0.65rem;
-    gap: 0.6rem;
-    overflow: hidden;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-
-  .hero-box:last-child {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
 
 }
 
@@ -386,12 +239,6 @@
     gap: 0.85rem;
   }
 
-  .hero-box {
-    padding: 0.65rem 0.55rem;
-    overflow: hidden;
-    min-width: 0;
-    box-sizing: border-box;
-  }
 
   .hero h1 {
     font-size: 1.2rem;

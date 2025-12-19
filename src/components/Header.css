@@ -1,4 +1,3 @@
-@import '../App.css';
 @import './Button.css';
 
 
@@ -92,19 +91,6 @@
   font-weight: 400 !important;
 }
 
-.nav-actions {
-  display: flex;
-  gap: .45rem;
-}
-
-/* Nav actions use universal button styles - exactly like footer buttons */
-.nav-actions a {
-  /* Uses .btn class - inherits all styles from Button.css */
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  gap: 0;
-}
 
 /* Theme Toggle Button - uses universal .btn styles - exactly like footer buttons */
 .theme-toggle {
