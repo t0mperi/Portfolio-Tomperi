@@ -1,9 +1,25 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import Button from './Button';
 import Card from './Card';
 import './Hero.css';
 
 export default function Hero() {
+  const fullText = "I'm a Software Development student at Haaga-Helia University of Applied Sciences";
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+
+  useEffect(() => {
+    if (displayedText.length < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(fullText.slice(0, displayedText.length + 1));
+      }, 50);
+      return () => clearTimeout(timeout);
+    } else {
+      setIsTyping(false);
+    }
+  }, [displayedText, fullText]);
+
   return (
     <section className="hero section" id="hero">
       <motion.img
@@ -33,7 +49,10 @@ export default function Hero() {
           hover={false}
         >
           <h1>Hi, I'm Henri Tomperi</h1>
-          <p className="typing">I'm a Software Development student at Haaga-Helia University of Applied Sciences</p>
+          <p className="typing">
+            {displayedText}
+            {isTyping && <span className="typing-cursor">|</span>}
+          </p>
         </Card>
 
         <Card
