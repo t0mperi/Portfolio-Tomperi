@@ -41,9 +41,21 @@
 }
 
 .btn-submit {
-  padding: .85rem 1.5rem;
+  padding: 0.875rem 1.5rem;
   width: 100%;
   max-width: 100%;
+  border: 1px solid #000000;
+  background: #3b3b3b;
+  color: #ffffff;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #333333;
+  border-color: #333333;
+  color: #ffffff;
 }
 
 /* Unified hover style for all buttons - same as footer/header */
