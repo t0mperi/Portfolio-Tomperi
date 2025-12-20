@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { Mail, User, MessageSquare } from 'lucide-react';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Button from '../components/Button';
+import Input from '../components/Input';
 import { APP_CONFIG } from '../utils/constants';
 import { generateMailtoLink } from '../utils/helpers';
 import type { ContactFormData } from '../utils/types';
@@ -39,51 +40,37 @@ export default function Contact() {
         <ScrollAnimation className="contact-form-wrapper" x={-50}>
           <h2 className="contact-heading">LEAVE A MESSAGE</h2>
           <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <User className="input-icon" size={20} />
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Name"
-                  className={`form-input ${errors.name ? 'error' : ''}`}
-                  {...register('name')}
-                />
-              </div>
-              {errors.name && <span className="error-message">{errors.name.message}</span>}
-            </div>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <Mail className="input-icon" size={20} />
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Email"
-                  className={`form-input ${errors.email ? 'error' : ''}`}
-                  {...register('email')}
-                />
-              </div>
-              {errors.email && <span className="error-message">{errors.email.message}</span>}
-            </div>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <MessageSquare className="input-icon" size={20} />
-                <textarea
-                  id="message"
-                  placeholder="Message"
-                  rows={6}
-                  className={`form-input ${errors.message ? 'error' : ''}`}
-                  {...register('message')}
-                />
-              </div>
-              {errors.message && <span className="error-message">{errors.message.message}</span>}
-            </div>
+            <Input
+              id="name"
+              type="text"
+              placeholder="Name"
+              icon={<User size={20} />}
+              error={errors.name?.message}
+              {...register('name')}
+            />
+            <Input
+              id="email"
+              type="email"
+              placeholder="Email"
+              icon={<Mail size={20} />}
+              error={errors.email?.message}
+              {...register('email')}
+            />
+            <Input
+              id="message"
+              as="textarea"
+              placeholder="Message"
+              rows={6}
+              icon={<MessageSquare size={20} />}
+              error={errors.message?.message}
+              {...register('message')}
+            />
             <Button
               variant="submit"
               type="submit"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Sending...' : 'Send message'}
+              {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
             </Button>
           </form>
         </ScrollAnimation>

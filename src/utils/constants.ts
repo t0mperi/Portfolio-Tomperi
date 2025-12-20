@@ -7,7 +7,7 @@ export const APP_CONFIG = {
   title: 'Portfolio',
   description: 'Software Development student portfolio',
   email: 'henritomperi97@gmail.com',
-  location: 'Helsinki, Finland',
+  location: 'Järvenpää, Finland',
 } as const;
 
 export const NAVIGATION_LINKS = [

@@ -2,12 +2,17 @@ import { forwardRef } from 'react';
 import type { ReactNode } from 'react';
 import './Input.css';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+type BaseInputProps = {
   label?: string;
   error?: string;
   icon?: ReactNode;
   as?: 'input' | 'textarea';
-}
+};
+
+type InputProps = BaseInputProps & (
+  | (React.InputHTMLAttributes<HTMLInputElement> & { as?: 'input' })
+  | (React.TextareaHTMLAttributes<HTMLTextAreaElement> & { as: 'textarea' })
+);
 
 const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
   ({ label, error, icon, as = 'input', className = '', ...props }, ref) => {
