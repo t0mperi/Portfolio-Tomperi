@@ -4,7 +4,9 @@ import { z } from 'zod';
 import { Mail, User, MessageSquare } from 'lucide-react';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Button from '../components/Button';
-import Input from '../components/Input';
+import { APP_CONFIG } from '../utils/constants';
+import { generateMailtoLink } from '../utils/helpers';
+import type { ContactFormData } from '../utils/types';
 import './Contact.css';
 
 const contactSchema = z.object({
@@ -12,8 +14,6 @@ const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
 });
-
-type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function Contact() {
   const {
@@ -26,7 +26,9 @@ export default function Contact() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    const mailtoLink = `mailto:henritomperi97@gmail.com?subject=Contact from ${encodeURIComponent(data.name)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`)}`;
+    const subject = `Contact from ${data.name}`;
+    const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
+    const mailtoLink = generateMailtoLink(APP_CONFIG.email, subject, body);
     window.location.href = mailtoLink;
     reset();
   };
@@ -88,11 +90,11 @@ export default function Contact() {
         <ScrollAnimation className="contact-profile" x={50}>
           <div className="profile-card">
             <div className="profile-info">
-              <div className="profile-name">Henri Tomperi</div>
+              <div className="profile-name">{APP_CONFIG.name}</div>
               <div className="profile-divider"></div>
-              <div className="profile-location">Helsinki, Finland</div>
+              <div className="profile-location">{APP_CONFIG.location}</div>
               <div className="profile-divider"></div>
-              <div className="profile-email">henritomperi97@gmail.com</div>
+              <div className="profile-email">{APP_CONFIG.email}</div>
             </div>
           </div>
         </ScrollAnimation>

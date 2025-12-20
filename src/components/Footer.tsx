@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import ScrollAnimation from './ScrollAnimation';
+import { APP_CONFIG, SOCIAL_LINKS } from '../utils/constants';
 import './Footer.css';
 
 export default function Footer() {
@@ -9,7 +10,7 @@ export default function Footer() {
       <div className="footer-content">
         <ScrollAnimation className="footer-links" y={20}>
           <motion.a
-            href="https://github.com/t0mperi"
+            href={SOCIAL_LINKS.github}
             target="_blank"
             rel="noreferrer"
             className="btn"
@@ -20,7 +21,7 @@ export default function Footer() {
             GitHub
           </motion.a>
           <motion.a
-            href="https://www.linkedin.com/in/henri-tomperi-8a2a0229b/"
+            href={SOCIAL_LINKS.linkedin}
             target="_blank"
             rel="noreferrer"
             className="btn"
@@ -31,7 +32,7 @@ export default function Footer() {
             LinkedIn
           </motion.a>
           <motion.a
-            href="mailto:henritomperi97@gmail.com"
+            href={`mailto:${SOCIAL_LINKS.email}`}
             className="btn"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
@@ -41,7 +42,7 @@ export default function Footer() {
           </motion.a>
         </ScrollAnimation>
         <ScrollAnimation className="footer-text" y={0} delay={0.2}>
-          <p>Henri Tomperi</p>
+          <p>{APP_CONFIG.name}</p>
         </ScrollAnimation>
       </div>
     </footer>

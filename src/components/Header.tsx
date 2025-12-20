@@ -2,6 +2,8 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
+import { NAVIGATION_LINKS } from '../utils/constants';
+import { scrollToElement } from '../utils/helpers';
 import './Header.css';
 
 export default function Header() {
@@ -32,20 +34,9 @@ export default function Header() {
   }, []);
 
   const handleLinkClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.history.pushState(null, '', href);
-      setIsMobileMenuOpen(false);
-    }
+    scrollToElement(href);
+    setIsMobileMenuOpen(false);
   };
-
-  const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' },
-  ];
 
   return (
     <header className="site-header">
@@ -56,7 +47,7 @@ export default function Header() {
       </div>
       <NavigationMenu.Root className="nav-root desktop-nav">
         <NavigationMenu.List className="nav">
-          {navLinks.map((link) => (
+          {NAVIGATION_LINKS.map((link) => (
             <NavigationMenu.Item key={link.href}>
               <NavigationMenu.Link
                 className={`btn nav-link ${activeSection === link.href.substring(1) ? 'active' : ''}`}
@@ -138,7 +129,7 @@ export default function Header() {
               transition={{ duration: 0.5, ease: [0.55, 0, 0.1, 1] }}
             >
               <ul className="mobile-menu-list">
-                {navLinks.map((link, index) => (
+                {NAVIGATION_LINKS.map((link, index) => (
                   <motion.li
                     key={link.href}
                     initial={{ opacity: 0, y: 20 }}

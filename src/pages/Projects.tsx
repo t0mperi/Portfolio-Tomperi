@@ -1,26 +1,10 @@
 import ScrollAnimation from '../components/ScrollAnimation';
 import Card from '../components/Card';
 import Tag from '../components/Tag';
+import { PROJECTS } from '../utils/constants';
 import './Projects.css';
 
 export default function Projects() {
-  const projects = [
-    {
-      title: 'Portfolio',
-      description: 'Personal site showcasing projects, experience, and skills.',
-      tags: ['React', 'TypeScript', 'Vite'],
-    },
-    {
-      title: 'LCA Helper',
-      description: 'Internal tool to streamline life cycle assessment modeling workflows.',
-      tags: ['Node.js', 'SQL Server', 'Express'],
-    },
-    {
-      title: 'Soon™',
-      description: 'More projects coming soon. Stay tuned!',
-      tags: ['Design', 'API', 'Cloud'],
-    },
-  ];
 
   return (
     <section id="projects" className="section">
@@ -28,7 +12,7 @@ export default function Projects() {
         Projects
       </ScrollAnimation>
       <div className="project-grid">
-        {projects.map((project, index) => (
+        {PROJECTS.map((project, index) => (
           <Card
             key={project.title}
             variant="project"
