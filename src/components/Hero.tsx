@@ -5,20 +5,54 @@ import Card from './Card';
 import './Hero.css';
 
 export default function Hero() {
-  const fullText = "I'm a Software Development student at Haaga-Helia University of Applied Sciences";
+  const lines = [
+    "my name is Henri Tomperi",
+    "im 28 years old software development student",
+    "at Haaga-Helia University of Applied Sciences"
+  ];
   const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [isErasing, setIsErasing] = useState(false);
 
   useEffect(() => {
-    if (displayedText.length < fullText.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText(fullText.slice(0, displayedText.length + 1));
-      }, 50);
-      return () => clearTimeout(timeout);
-    } else {
-      setIsTyping(false);
+    if (currentLineIndex < lines.length) {
+      const currentLine = lines[currentLineIndex];
+      
+      if (!isErasing) {
+        // Typing mode
+        if (currentCharIndex < currentLine.length) {
+          const timeout = setTimeout(() => {
+            setDisplayedText(currentLine.slice(0, currentCharIndex + 1));
+            setCurrentCharIndex(prev => prev + 1);
+          }, 50);
+          return () => clearTimeout(timeout);
+        } else {
+          const timeout = setTimeout(() => {
+            setIsErasing(true);
+          }, 2000);
+          return () => clearTimeout(timeout);
+        }
+      } else {
+        // Erasing mode
+        if (currentCharIndex > 0) {
+          const timeout = setTimeout(() => {
+            setDisplayedText(currentLine.slice(0, currentCharIndex - 1));
+            setCurrentCharIndex(prev => prev - 1);
+          }, 30);
+          return () => clearTimeout(timeout);
+        } else {
+          const timeout = setTimeout(() => {
+            setIsErasing(false);
+            setCurrentLineIndex(prev => (prev + 1) % lines.length);
+            setCurrentCharIndex(0);
+            setDisplayedText('');
+          }, 300);
+          return () => clearTimeout(timeout);
+        }
+      }
     }
-  }, [displayedText, fullText]);
+  }, [currentCharIndex, currentLineIndex, isErasing, lines]);
 
   return (
     <section className="hero section" id="hero">
@@ -48,10 +82,10 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           hover={false}
         >
-          <h1>Hi, I'm Henri Tomperi</h1>
+          <h1>Hello</h1>
           <p className="typing">
             {displayedText}
-            {isTyping && <span className="typing-cursor">|</span>}
+            <span className="typing-cursor">|</span>
           </p>
         </Card>
 
