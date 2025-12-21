@@ -109,3 +109,24 @@
   }
 }
 
+/* Tag list container */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .6rem;
+  list-style: none;
+  padding: 0;
+  margin: .5rem 0 0;
+}
+
+/* Project page specific tag-list overrides */
+.project-body .tag-list {
+  gap: 0.4rem 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .project-body .tag-list {
+    gap: 0.35rem 0.45rem;
+  }
+}
+

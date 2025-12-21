@@ -1,6 +1,4 @@
 
-
-
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -112,16 +110,6 @@
 @media (max-width: 360px) {
   .project-body p {
     font-size: 0.85rem;
-  }
-}
-
-.tag-list {
-  gap: 0.4rem 0.5rem;
-}
-
-@media (max-width: 480px) {
-  .tag-list {
-    gap: 0.35rem 0.45rem;
   }
 }
 

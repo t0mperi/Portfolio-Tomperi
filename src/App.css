@@ -241,14 +241,3 @@ main {
   }
 }
 
-/* Tag pills */
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem .6rem;
-  list-style: none;
-  padding: 0;
-  margin: .5rem 0 0;
-}
-
-
