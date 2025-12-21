@@ -18,7 +18,6 @@ import {
   SiSharp,
 } from 'react-icons/si';
 import { FaJava, FaMicrosoft, FaCode, FaCloud } from 'react-icons/fa';
-import './About.css';
 
 export default function About() {
   const skillIcons: Record<string, React.ReactElement> = {

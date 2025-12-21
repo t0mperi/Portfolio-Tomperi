@@ -127,7 +127,6 @@
     inset -1px -1px 0 rgba(0, 0, 0, 0.3),
     2px 2px 4px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  transition: box-shadow .2s ease, transform .15s ease;
 }
 
 

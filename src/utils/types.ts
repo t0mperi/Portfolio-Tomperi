@@ -50,7 +50,7 @@ export interface Theme {
   toggleTheme: () => void;
 }
 
-export type CardVariant = 'default' | 'project' | 'experience' | 'hero';
+export type CardVariant = 'default' | 'project' | 'hero';
 
 export type ButtonVariant = 'ghost' | 'primary' | 'submit';
 

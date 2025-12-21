@@ -4,7 +4,7 @@ import './Card.css';
 
 interface CardProps {
   children: ReactNode;
-  variant?: 'default' | 'project' | 'experience' | 'hero';
+  variant?: 'default' | 'project' | 'hero';
   className?: string;
   hover?: boolean;
   initial?: { opacity: number; y: number };
