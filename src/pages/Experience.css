@@ -342,6 +342,29 @@
   color: var(--text-secondary);
 }
 
+.xp-skills {
+  margin-top: .85rem;
+  display: grid;
+  gap: .5rem;
+}
+
+.xp-skills-label {
+  width: fit-content;
+  border: 2px solid var(--border-dark);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: .3rem .6rem;
+  border-radius: 0;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.xp-skills .tag-list {
+  margin-top: 0.5rem;
+}
+
 .xp-impact {
   margin-top: .85rem;
   display: grid;

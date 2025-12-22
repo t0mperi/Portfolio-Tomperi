@@ -1,12 +1,52 @@
 import './Experience.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Building2, Calendar, Target } from 'lucide-react';
+import { ChevronDown, Building2, Calendar } from 'lucide-react';
 import ScrollAnimation from '../components/ScrollAnimation';
+import Tag from '../components/Tag';
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiTypescript,
+  SiSpring,
+  SiNodedotjs,
+  SiMysql,
+  SiDocker,
+  SiGit,
+  SiPython,
+  SiGithub,
+  SiSharp,
+} from 'react-icons/si';
+import { FaJava, FaMicrosoft, FaCode, FaCloud } from 'react-icons/fa';
 
 export default function Experience() {
   const [openEnsto, setOpenEnsto] = useState(true);
-  const [openFreelance, setOpenFreelance] = useState(false);
+  const [openVirnex, setOpenVirnex] = useState(false);
+
+  const skillIcons: Record<string, React.ReactElement> = {
+    'HTML': <SiHtml5 />,
+    'CSS': <SiCss3 />,
+    'JavaScript': <SiJavascript />,
+    'React': <SiReact />,
+    'TypeScript': <SiTypescript />,
+    'Java': <FaJava />,
+    'C#': <SiSharp />,
+    'Spring Boot': <SiSpring />,
+    'Node.js': <SiNodedotjs />,
+    'SQL': <SiMysql />,
+    'Docker': <SiDocker />,
+    'Git': <SiGit />,
+    'Python': <SiPython />,
+    'Visual Studio': <FaMicrosoft />,
+    'VS Code': <FaCode />,
+    'GitHub': <SiGithub />,
+    'Azure': <FaCloud />,
+  };
+
+  const enstoSkills = ['C#', 'SQL', 'Git', 'Visual Studio', 'Azure'];
+  const virnexSkills = ['React', 'TypeScript', 'Git', 'VS Code', 'Devops'];
 
   return (
     <section id="experience" className="section">
@@ -30,7 +70,7 @@ export default function Experience() {
               <div className="xp-role">Developer · LCA tooling</div>
               <div className="xp-meta">
                 <Calendar size={16} />
-                <span>2023 — Present</span>
+                <span>2023 — 2025</span>
               </div>
             </div>
             <motion.div
@@ -55,14 +95,18 @@ export default function Experience() {
                   <li>Built an application to support life cycle assessment modelling.</li>
                   <li>Designed and implemented a SQL Server database for the app.</li>
                 </ul>
-                <div className="xp-impact">
-                  <div className="xp-impact-label">
-                    <Target size={16} />
-                    <span>Impact</span>
+                <div className="xp-skills">
+                  <div className="xp-skills-label">Technologies Used</div>
+                  <div className="tag-list">
+                    {enstoSkills.map((skill) => (
+                      <Tag key={skill} variant="skill">
+                        {skillIcons[skill] && <span className="skill-icon">{skillIcons[skill]}</span>}
+                        {skill}
+                      </Tag>
+                    ))}
                   </div>
-                  <ul className="xp-list">
-                    <li>Improved modelling turnaround time by reducing manual steps.</li>
-                  </ul>
+                </div>
+                <div className="xp-impact">
                 </div>
               </motion.div>
             )}
@@ -73,23 +117,23 @@ export default function Experience() {
           <button
             className="xp-card-head"
             type="button"
-            onClick={() => setOpenFreelance((v) => !v)}
-            aria-expanded={openFreelance}
+            onClick={() => setOpenVirnex((v) => !v)}
+            aria-expanded={openVirnex}
           >
             <div className="xp-card-info">
               <div className="xp-company">
                 <Building2 size={18} />
-                <span>Freelance</span>
+                <span>Virnex Group Oy</span>
               </div>
-              <div className="xp-role">Full-stack Developer</div>
+              <div className="xp-role">Trainee</div>
               <div className="xp-meta">
                 <Calendar size={16} />
-                <span>2022 — 2023</span>
+                <span>April 2025 — January 2026</span>
               </div>
             </div>
             <motion.div
               className="xp-chevron"
-              animate={{ rotate: openFreelance ? 180 : 0 }}
+              animate={{ rotate: openVirnex ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
               <ChevronDown size={20} />
@@ -97,7 +141,7 @@ export default function Experience() {
           </button>
 
           <AnimatePresence>
-            {openFreelance && (
+            {openVirnex && (
               <motion.div
                 className="xp-body"
                 initial={{ height: 0, opacity: 0 }}
@@ -106,7 +150,19 @@ export default function Experience() {
                 transition={{ duration: 0.3 }}
               >
                 <ul className="xp-list">
+                  <li>Worked in a team to build a web application for a client.</li>
                 </ul>
+                <div className="xp-skills">
+                  <div className="xp-skills-label">Technologies Used</div>
+                  <div className="tag-list">
+                    {virnexSkills.map((skill) => (
+                      <Tag key={skill} variant="skill">
+                        {skillIcons[skill] && <span className="skill-icon">{skillIcons[skill]}</span>}
+                        {skill}
+                      </Tag>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
