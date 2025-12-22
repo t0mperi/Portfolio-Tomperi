@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+[data-theme="dark"] .site-footer {
+  background: var(--bg-card);
+}
+
 @media (max-width: 768px) {
   .site-footer {
     padding: 1.5rem 1rem;
