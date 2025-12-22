@@ -1,5 +1,5 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 import { NAVIGATION_LINKS } from '../utils/constants';
@@ -10,6 +10,25 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const navRef = useRef<HTMLUListElement>(null);
+  const decorRef = useRef<HTMLSpanElement>(null);
+
+  const setDecorPosition = useCallback((targetElement: HTMLElement | null) => {
+    if (!targetElement || !decorRef.current || !navRef.current) return;
+
+    const navRect = navRef.current.getBoundingClientRect();
+    const targetRect = targetElement.getBoundingClientRect();
+
+    const top = targetRect.top - navRect.top + 'px';
+    const left = targetRect.left - navRect.left + 'px';
+    const width = targetRect.width + 'px';
+    const height = targetRect.height + 'px';
+
+    decorRef.current.style.top = top;
+    decorRef.current.style.left = left;
+    decorRef.current.style.width = width;
+    decorRef.current.style.height = height;
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,9 +52,55 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (href: string) => {
+  useEffect(() => {
+    if (!navRef.current) return;
+
+    if (activeSection) {
+      const activeLink = navRef.current.querySelector(`a[href="#${activeSection}"], [href="#${activeSection}"]`) as HTMLElement;
+      if (activeLink) {
+        setTimeout(() => setDecorPosition(activeLink), 0);
+      }
+    } else {
+      const firstLink = navRef.current.querySelector('a, [role="link"]') as HTMLElement;
+      if (firstLink) {
+        setTimeout(() => setDecorPosition(firstLink), 0);
+      }
+    }
+  }, [activeSection, setDecorPosition]);
+
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        if (!navRef.current) return;
+        const targetLink = activeSection 
+          ? navRef.current.querySelector(`a[href="#${activeSection}"], [href="#${activeSection}"]`) as HTMLElement
+          : navRef.current.querySelector('a, [role="link"]') as HTMLElement;
+        if (targetLink) {
+          setDecorPosition(targetLink);
+        }
+      }, 250);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
+  }, [activeSection, setDecorPosition]);
+
+  const handleLinkClick = (href: string, event?: React.MouseEvent<HTMLElement>) => {
     scrollToElement(href);
     setIsMobileMenuOpen(false);
+    
+    // Position decorator on the clicked link
+    if (event?.currentTarget) {
+      setTimeout(() => {
+        setDecorPosition(event.currentTarget);
+      }, 0);
+    }
   };
 
   return (
@@ -46,7 +111,8 @@ export default function Header() {
         </a>
       </div>
       <NavigationMenu.Root className="nav-root desktop-nav">
-        <NavigationMenu.List className="nav">
+        <NavigationMenu.List className="nav" ref={navRef}>
+          <span ref={decorRef} className="nav-decor" aria-hidden="true"></span>
           {NAVIGATION_LINKS.map((link) => (
             <NavigationMenu.Item key={link.href}>
               <NavigationMenu.Link
@@ -54,7 +120,8 @@ export default function Header() {
                 href={link.href}
                 onSelect={(e) => {
                   e.preventDefault();
-                  handleLinkClick(link.href);
+                  const target = e.currentTarget as HTMLElement;
+                  handleLinkClick(link.href, { currentTarget: target } as React.MouseEvent<HTMLElement>);
                 }}
               >
                 {link.label}

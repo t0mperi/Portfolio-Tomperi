@@ -60,13 +60,28 @@
   margin: 0;
   padding: 0;
   justify-content: center;
+  position: relative;
 }
 
-/* Nav links use universal button styles from Button.css - exactly like footer buttons */
-/* Ensure .btn styles take precedence - nav-link only adds Radix UI compatibility */
+.nav-decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  transform-origin: center;
+  transition: top 200ms ease-in-out, left 200ms ease-in-out, width 200ms ease-in-out, height 200ms ease-in-out;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .nav-decor {
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .btn.nav-link {
-  /* All visual styles come from .btn class */
-  /* Only override display/alignment for Radix UI compatibility */
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -79,7 +94,6 @@
   outline-offset: 2px;
 }
 
-/* Active nav link - pressed in appearance */
 .nav-link.active {
   background: var(--bg-card) !important;
   color: var(--text-primary) !important;
@@ -92,7 +106,6 @@
 }
 
 
-/* Theme Toggle Button - uses universal .btn styles - exactly like footer buttons */
 .theme-toggle {
   width: 36px;
   height: 36px;
@@ -100,10 +113,8 @@
   font-size: 1.2rem;
   flex-shrink: 0;
   gap: 0;
-  /* Inherits all other styles from .btn (borders, background, shadow, hover) */
 }
 
-/* Mobile Menu Button - uses universal .btn styles - exactly like footer buttons */
 .mobile-menu-button {
   display: none;
   width: 42px;
@@ -112,7 +123,6 @@
   gap: 0;
   position: relative;
   z-index: 1001;
-  /* Inherits all other styles from .btn (borders, background, shadow, hover) */
 }
 
 .hamburger-container {
@@ -151,7 +161,6 @@
   bottom: 0;
 }
 
-/* Mobile Menu Overlay */
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
@@ -161,7 +170,6 @@
   z-index: 999;
 }
 
-/* Full Screen Mobile Menu */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -229,9 +237,6 @@
 .mobile-nav-link.active::after {
   transform: translateX(-50%) scaleX(1);
 }
-
-/* Responsive Header */
-/* Responsive styles handled by Button.css - removed overrides */
 
 @media (max-width: 768px) {
   .desktop-nav {
