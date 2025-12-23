@@ -7,21 +7,24 @@ import Experience from './pages/Experience'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
+import MouseGradient from './components/MouseGradient'
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="app-container">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <MouseGradient>
+        <div className="app-container">
+          <Header />
+          <main>
+            <Hero />
+            <About />
+            <Experience />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      </MouseGradient>
     </ThemeProvider>
   )
 }
