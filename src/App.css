@@ -88,7 +88,7 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 5rem;
   width: 100%;
 }
 
@@ -220,13 +220,22 @@ main {
   grid-template-columns: 1fr;
   gap: 1.25rem;
   width: 100%;
+  align-items: start;
 }
 
 @media (min-width: 800px) {
   .columns {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
+    align-items: start;
   }
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 @media (max-width: 480px) {
