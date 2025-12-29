@@ -1,49 +1,13 @@
 import './Experience.css';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Building2, Calendar } from 'lucide-react';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Tag from '../components/Tag';
-import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiReact,
-  SiTypescript,
-  SiSpring,
-  SiNodedotjs,
-  SiMysql,
-  SiDocker,
-  SiGit,
-  SiPython,
-  SiGithub,
-  SiSharp,
-} from 'react-icons/si';
-import { FaJava, FaMicrosoft, FaCode, FaCloud } from 'react-icons/fa';
 
 export default function Experience() {
   const [openEnsto, setOpenEnsto] = useState(true);
   const [openVirnex, setOpenVirnex] = useState(false);
-
-  const skillIcons: Record<string, React.ReactElement> = {
-    'HTML': <SiHtml5 />,
-    'CSS': <SiCss3 />,
-    'JavaScript': <SiJavascript />,
-    'React': <SiReact />,
-    'TypeScript': <SiTypescript />,
-    'Java': <FaJava />,
-    'C#': <SiSharp />,
-    'Spring Boot': <SiSpring />,
-    'Node.js': <SiNodedotjs />,
-    'SQL': <SiMysql />,
-    'Docker': <SiDocker />,
-    'Git': <SiGit />,
-    'Python': <SiPython />,
-    'Visual Studio': <FaMicrosoft />,
-    'VS Code': <FaCode />,
-    'GitHub': <SiGithub />,
-    'Azure': <FaCloud />,
-  };
 
   const enstoSkills = ['C#', 'SQL', 'Git', 'Visual Studio', 'Azure'];
   const virnexSkills = ['React', 'TypeScript', 'Git', 'VS Code', 'Devops'];
@@ -100,7 +64,6 @@ export default function Experience() {
                   <div className="tag-list">
                     {enstoSkills.map((skill) => (
                       <Tag key={skill} variant="skill">
-                        {skillIcons[skill] && <span className="skill-icon">{skillIcons[skill]}</span>}
                         {skill}
                       </Tag>
                     ))}
@@ -157,7 +120,6 @@ export default function Experience() {
                   <div className="tag-list">
                     {virnexSkills.map((skill) => (
                       <Tag key={skill} variant="skill">
-                        {skillIcons[skill] && <span className="skill-icon">{skillIcons[skill]}</span>}
                         {skill}
                       </Tag>
                     ))}
