@@ -1,51 +1,14 @@
-import React from 'react';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Tag from '../components/Tag';
 import { SKILLS, APP_CONFIG } from '../utils/constants';
-import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiReact,
-  SiTypescript,
-  SiSpring,
-  SiNodedotjs,
-  SiMysql,
-  SiDocker,
-  SiGit,
-  SiPython,
-  SiGithub,
-  SiSharp,
-} from 'react-icons/si';
-import { FaJava, FaMicrosoft, FaCode, FaCloud } from 'react-icons/fa';
-
 export default function About() {
-  const skillIcons: Record<string, React.ReactElement> = {
-    'HTML': <SiHtml5 />,
-    'CSS': <SiCss3 />,
-    'JavaScript': <SiJavascript />,
-    'React': <SiReact />,
-    'TypeScript': <SiTypescript />,
-    'Java': <FaJava />,
-    'C#': <SiSharp />,
-    'Spring Boot': <SiSpring />,
-    'Node.js': <SiNodedotjs />,
-    'SQL': <SiMysql />,
-    'Docker': <SiDocker />,
-    'Git': <SiGit />,
-    'Python': <SiPython />,
-    'Visual Studio': <FaMicrosoft />,
-    'VS Code': <FaCode />,
-    'GitHub': <SiGithub />,
-    'Azure': <FaCloud />,
-  };
 
   return (
     <section id="about" className="section">
       <ScrollAnimation as="h3" y={30}>
         About Me
       </ScrollAnimation>
-      <div className="columns">
+      <div className="about-content">
         <ScrollAnimation x={-30} delay={0}>
           <p className="name">Hello, my name is {APP_CONFIG.name}</p>
           <p>
@@ -56,11 +19,9 @@ export default function About() {
           </p>
         </ScrollAnimation>
         <ScrollAnimation x={30} delay={0.2}>
-          <h3>My Skills</h3>
           <ScrollAnimation as="div" className="tag-list" y={0} delay={0.3}>
             {SKILLS.map((skill) => (
-              <Tag key={skill} variant="skill">
-                {skillIcons[skill] && <span className="skill-icon">{skillIcons[skill]}</span>}
+              <Tag key={skill} variant="skill" title={skill}>
                 {skill}
               </Tag>
             ))}
