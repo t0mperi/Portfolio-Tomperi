@@ -54,6 +54,7 @@ src/
 
 ## 🌐 Deployment
 
+Deployed https://portfolio-tomperi.vercel.app/
 The project is configured for deployment on Vercel. The `vercel.json` file contains the necessary configuration for static site deployment.
 
 
