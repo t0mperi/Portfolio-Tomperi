@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import ScrollAnimation from './ScrollAnimation';
-import { APP_CONFIG, SOCIAL_LINKS } from '../utils/constants';
+import { SOCIAL_LINKS } from '../utils/constants';
 import './Footer.css';
 
 export default function Footer() {
@@ -42,7 +42,7 @@ export default function Footer() {
           </motion.a>
         </ScrollAnimation>
         <ScrollAnimation className="footer-text" y={0} delay={0.2}>
-          <p>{APP_CONFIG.name}</p>
+          <p>Built with React, TypeScript, and Vite</p>
         </ScrollAnimation>
       </div>
     </footer>
