@@ -42,7 +42,7 @@ export default function Footer() {
           </motion.a>
         </ScrollAnimation>
         <ScrollAnimation className="footer-text" y={0} delay={0.2}>
-          <p>Built with React, TypeScript, and Vite</p>
+          <p>Built with React, TypeScript and Vite</p>
         </ScrollAnimation>
       </div>
     </footer>
