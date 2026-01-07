@@ -24,7 +24,6 @@ export default function MouseGradient({ children, className = '' }: MouseGradien
     };
 
     const handleMouseLeave = () => {
-      // Reset to center when mouse leaves
       if (gradient) {
         gradient.style.setProperty('--mouse-x', '50%');
         gradient.style.setProperty('--mouse-y', '50%');

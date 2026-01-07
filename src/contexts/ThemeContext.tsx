@@ -12,12 +12,10 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    // Check localStorage first, then system preference
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme) {
       return savedTheme;
     }
-    // Check system preference
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark';
     }
@@ -25,14 +23,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    // Apply theme to document root
     const root = document.documentElement;
     if (theme === 'dark') {
       root.setAttribute('data-theme', 'dark');
     } else {
       root.setAttribute('data-theme', 'light');
     }
-    // Save to localStorage
     localStorage.setItem('theme', theme);
   }, [theme]);
 

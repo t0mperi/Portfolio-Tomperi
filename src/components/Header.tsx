@@ -48,7 +48,7 @@ export default function Header() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on mount
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -95,7 +95,7 @@ export default function Header() {
     scrollToElement(href);
     setIsMobileMenuOpen(false);
     
-    // Position decorator on the clicked link
+
     if (event?.currentTarget) {
       setTimeout(() => {
         setDecorPosition(event.currentTarget);
