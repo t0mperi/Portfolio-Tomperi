@@ -25,6 +25,7 @@ export interface Project {
   description: string;
   tags: string[];
   link?: string;
+  github?: string;
   image?: string;
 }
 

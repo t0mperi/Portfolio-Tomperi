@@ -49,16 +49,21 @@ export const PROJECTS = [
     title: 'Portfolio',
     description: 'Personal site showcasing projects, experience, and skills.',
     tags: ['React', 'TypeScript', 'Vite'],
+    github: 'https://github.com/t0mperi/Portfolio-Tomperi',
+    image: '/portfolioproject.png',
   },
   {
-    title: 'LCA Helper',
-    description: 'Internal tool to streamline life cycle assessment modeling workflows.',
-    tags: ['Node.js', 'SQL Server', 'Express'],
+    title: 'Full login and password reset',
+    description: 'Full login and password reset functionality for a web application.',
+    tags: [],
+    github: 'https://github.com/t0mperi/full-login-register-and-password-reset',
+    // image: '/login-screenshot.jpg', // Add image path here (place image in public folder)
   },
   {
     title: 'Soon™',
     description: 'More projects coming soon. Stay tuned!',
     tags: ['Design', 'API', 'Cloud'],
+    // image: '/project-screenshot.jpg', // Add image path here (place image in public folder)
   },
 ] as const;
 
