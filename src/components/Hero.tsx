@@ -20,7 +20,6 @@ export default function Hero() {
       const currentLine = lines[currentLineIndex];
       
       if (!isErasing) {
-        // Typing mode
         if (currentCharIndex < currentLine.length) {
           const timeout = setTimeout(() => {
             setDisplayedText(currentLine.slice(0, currentCharIndex + 1));
@@ -34,7 +33,6 @@ export default function Hero() {
           return () => clearTimeout(timeout);
         }
       } else {
-        // Erasing mode
         if (currentCharIndex > 0) {
           const timeout = setTimeout(() => {
             setDisplayedText(currentLine.slice(0, currentCharIndex - 1));
