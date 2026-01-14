@@ -46,11 +46,11 @@ src/
 
 ## 🎨 Sections
 
-- **Hero**: Animated introduction with typing effect
-- **About**: Personal information and skills showcase
-- **Experience**: Work experience with expandable cards
-- **Projects**: Portfolio projects with tags
-- **Contact**: Contact form with validation
+- **Hero**: Introduction
+- **About**: About section, skills
+- **Experience**: Work experience
+- **Projects**: Projects
+- **Contact**: Contact
 
 ## 🌐 Deployment
 
